@@ -1,14 +1,14 @@
-//! Prints "Hello, world!" on the host console using semihosting
+//! Blink the PC13 LED on the board
 
-#![no_main]
 #![no_std]
+#![no_main]
 #![deny(unsafe_code)]
 
 use panic_halt as _;
 
+use cortex_m::asm;
 use cortex_m_rt::entry;
-use cortex_m_semihosting::hprintln;
-use stm32f1xx_hal::{self, pac, prelude::*};
+use stm32f1xx_hal::{pac, prelude::*};
 
 #[entry]
 fn main() -> ! {
@@ -24,8 +24,13 @@ fn main() -> ! {
         .pclk1(36.MHz())
         .freeze(&mut flash.acr);
 
-    
-    hprintln!("Hello, world!");
+    let mut gpioc = dp.GPIOC.split();
+    let mut led = gpioc.pc13.into_push_pull_output(&mut gpioc.crh);
 
-    loop {}
+    loop {
+        asm::delay(4_000_000);
+        led.set_high();
+        asm::delay(4_000_000);
+        led.set_low();
+    }
 }

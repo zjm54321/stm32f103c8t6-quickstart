@@ -4,8 +4,11 @@
 
 	// List of extensions which should be recommended for users of this workspace.
 	"recommendations": [
+		"vadimcn.vscode-lldb",
 		"rust-lang.rust-analyzer",
 		"marus25.cortex-debug",
+		"probe-rs.probe-rs-debugger"
+
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": [
