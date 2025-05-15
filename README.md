@@ -1,3 +1,4 @@
+# 已弃用，现已转移到[stm32f103c8t6-embsy-quickstart](https://github.com/zjm54321/stm32f103c8t6-embsy-quickstart)
 # `cortex-m-quickstart`
 
 > A template for building applications for ARM Cortex-M microcontrollers
